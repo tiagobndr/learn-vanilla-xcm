@@ -28,7 +28,7 @@ const moonbeamContext = `{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Po
 const xcmBuilder = XCMBuilder.usingContext(moonbeamContext)
   .defineAsset(
     "USDC",
-    `{"parents":"1","interior":{"X3":[{"Parachain":"1000"},{"PalletInstance":"50"},{"GeneralIndex":"${HYDRATION_PARA_ID}"}]}}`
+    `{"parents":"1","interior":{"X3":[{"Parachain":"1000"},{"PalletInstance":"50"},{"GeneralIndex":"1337"}]}}`
   )
   .create();
 
