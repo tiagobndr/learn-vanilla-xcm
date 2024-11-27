@@ -19,24 +19,28 @@
 // 	    remote_xcm: Xcm<()>,
 //    }
 
+const MOONBEAM_PARA_ID = 2004;
+const HYDRATION_PARA_ID = 2034;
+
 // Setting the context on the Moonbeam parachain
-const moonbeamContext =
-  '{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Polkadot"},{"Parachain":"2004"}]}}';
+const moonbeamContext = `{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Polkadot"},{"Parachain":"${MOONBEAM_PARA_ID}"}]}}`;
 
 const xcmBuilder = XCMBuilder.usingContext(moonbeamContext)
   .defineAsset(
     "USDC",
-    '{"parents":"1","interior":{"X3":[{"Parachain":"1000"},{"PalletInstance":"50"},{"GeneralIndex":"1337"}]}}'
+    `{"parents":"1","interior":{"X3":[{"Parachain":"1000"},{"PalletInstance":"50"},{"GeneralIndex":"${HYDRATION_PARA_ID}"}]}}`
   )
   .create();
 
 const xcm = xcmBuilder
   .withdrawAsset("USDC", usdcAmount)
   .payFeesWith("USDC")
-  .setNextHop('{"parents":"1","interior":{"X1":[{"Parachain":"1000"}]}}')
+  .setNextHop(`{"parents":"1","interior":{"X1":[{"Parachain":"1000"}]}}`)
   .transferAll("USDC", "reserve")
   .payFeesWith("USDC") // Q?: Is this possible? To pay for fees with USDC instead of Hydration's native token (HDX)
-  .setNextHop('{"parents":"1","interior":{"X1":[{{"Parachain":"2034"}]}}')
+  .setNextHop(
+    `{"parents":"1","interior":{"X1":[{{"Parachain":"${HYDRATION_PARA_ID}"}]}}`
+  )
   .transferAll("USDC", "reserve")
   .depositAll(BOB_32_BYTES_ADDRESS)
   .finalize();
@@ -93,26 +97,27 @@ console.log(JSON.stringify(xcm));
   {
     depositReserveAsset: {
       assets: {
-        Wild: "All", // Q?: Once again, does All deposit all assets in the holding register or do we need to be more explicit?
-        // {
-        // AllOf: {
-        //   id: {
-        //     parents: 0,
-        //     interior: {
-        //       X2: [
-        //         {
-        //           PalletInstance: "50",
-        //         },
-        //         {
-        //           GeneralIndex: "1337",
-        //         },
-        //       ],
+        Wild: "All",
+        // Q?: There's only USDC in the Holding Register so I guess we don't need to be this explicit (instead of All):
+        // Wild: {
+        //   AllOf: {
+        //     id: {
+        //       parents: 0,
+        //       interior: {
+        //         X2: [
+        //           {
+        //             PalletInstance: "50",
+        //           },
+        //           {
+        //             GeneralIndex: "1337",
+        //           },
+        //         ],
+        //       },
+        //     },
+        //     fun: {
+        //       fungible: amount,
         //     },
         //   },
-        //   fun: {
-        //     fungible: amount,
-        //   },
-        // },
         // },
       },
       dest: {
