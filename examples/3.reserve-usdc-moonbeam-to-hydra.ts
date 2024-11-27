@@ -35,7 +35,6 @@ const xcm = xcmBuilder
   .payFeesWith("USDC")
   .setNextHop('{"parents":"1","interior":{"X1":[{"Parachain":"1000"}]}}')
   .transferAll("USDC", "reserve")
-  .executeHop()
   .payFeesWith("USDC") // Q?: Is this possible? To pay for fees with USDC instead of Hydration's native token (HDX)
   .setNextHop('{"parents":"1","interior":{"X1":[{{"Parachain":"2034"}]}}')
   .transferAll("USDC", "reserve")

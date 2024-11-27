@@ -56,13 +56,13 @@ console.log(JSON.stringify(xcm));
                 PalletInstance: "52",
               },
               {
-                GeneralIndex: "0",
+                GeneralIndex: "0", // NFT Collection ID: 0
               },
             ],
           },
         },
         fun: {
-          nonFungible: 0,
+          nonFungible: 0, // NFT ID: 0
         },
       },
     ],
@@ -84,7 +84,7 @@ console.log(JSON.stringify(xcm));
     payFees: {
       asset: {
         parents: 0,
-        interior: Junctions.Here(), // Q?: Still in the context of Westend, right? ClearOrigin hasn't been executed yet at this point afaik
+        interior: Junctions.Here(), // Westend's native token: WND
       },
     },
   },
@@ -98,7 +98,7 @@ console.log(JSON.stringify(xcm));
               interior: {
                 X1: [
                   {
-                    Parachain: "1000", // Q?: Do I also have to include { PalletInstance: "52", GeneralIndex: "0" } in the filter?
+                    Parachain: "1000", // Q?: Do I also have to include the uniques pallet { PalletInstance: "52" } in the filter?
                   },
                 ],
               },

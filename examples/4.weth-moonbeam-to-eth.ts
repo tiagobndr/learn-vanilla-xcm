@@ -94,7 +94,7 @@ console.log(JSON.stringify(xcm));
     initiateTransfer: {
       dest: {
         parents: 0,
-        interior: { X1: [{ Parachain: "2000" }] },
+        interior: { X1: [{ Parachain: "2000" }] }, // N!: Sending to Polkadot's Asset Hub
       },
       remote_fee: {
         // TODO: Burn local assets here (Q?: with a nested BurnAsset instruction?) and then append ReceiveTeleportedAsset to the nested XCM
