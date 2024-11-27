@@ -97,6 +97,7 @@ console.log(JSON.stringify(xcm));
         interior: { X1: [{ Parachain: "2000" }] }, // N!: Sending to Polkadot's Asset Hub
       },
       remote_fee: {
+        // Q?: Is BuyExecution/PayFees instruction automatically inserted (when executing in XCVM) or should it be here?
         // TODO: Burn local assets here (Q?: with a nested BurnAsset instruction?) and then append ReceiveTeleportedAsset to the nested XCM
         // burnAsset: {}
       },
@@ -107,7 +108,7 @@ console.log(JSON.stringify(xcm));
       ],
       preserve_origin: false, // Q?: If I set it to true, in the next initiateTransfer.dest instruction, do I have to { parents: 2, interior: { X1: [{ GlobalConsensus: "Ethereum" }] } }
       xcm: [
-        // { receiveTeleportedAsset: {} } // TODO: Appended because of remote_fee: Teleport(GLMR)
+        // { receiveTeleportedAsset: {} } // TODO: (Appended because of remote_fee: Teleport(GLMR))
         { exchangeAsset: {} }, // Exchange GLMR to WETH_ETHEREUM (to pay for fees on Ethereum)
         {
           initiateTransfer: {
