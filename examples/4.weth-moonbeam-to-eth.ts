@@ -16,7 +16,7 @@ const WETH_SC_MOONBEAM = "0xab3f0245b83feb11d15aaffefd7ad465a59817ed";
 
 const WETH_SC_ETHEREUM = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
 
-// Setting the context on the Westend relay chain
+// Setting the context on Moonbeam parachain
 const moonbeamContext = `{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Polkadot"},{"Parachain":"2004"}]}}`;
 
 const xcmBuilder = XCMBuilder.usingContext(moonbeamContext)
@@ -27,7 +27,7 @@ const xcmBuilder = XCMBuilder.usingContext(moonbeamContext)
   )
   .defineAsset(
     "WETH_ETHEREUM",
-    `{"parents":"2","interior":{"X2":[{"GlobalConsensus":"Ethereum"},{"AccountId20":"${WETH_SC_ETHEREUM}"}]}}`
+    `{"parents":"2","interior":{"X2":[{"GlobalConsensus":"Ethereum"},{"AccountId20":"${WETH_SC_ETHEREUM}"}]}}` // N!: Ethereum viewed from Moonbeam's perspective
   )
   .create();
 
@@ -115,7 +115,10 @@ console.log(JSON.stringify(xcm));
               parents: 0,
               interior: { X1: [{ GlobalConsensus: "Ethereum" }] },
             },
-            remote_fee: {}, // TODO: Burn local assets here (Q?: with a nested BurnAsset instruction?) and then append WithdrawAsset to the nested XCM (done*)
+            remote_fee: {
+              // TODO: Burn local assets here (Q?: with a nested BurnAsset instruction?) and then append WithdrawAsset to the nested XCM (done*)
+              // burnAsset: {}
+            },
             assets: [
               {
                 wild: "All", // N!: Deposit all assets in the Holding Register
