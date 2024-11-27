@@ -16,9 +16,9 @@ const DEST_HYDRATION_ACC =
   "0x48d5240fede0bd26c4f28f51b14cc5215d52390e04538d11abbd6b197082623b";
 
 // Setting the context on Polkadot Relay Chain
-const paraAContext = `{"parents":"0","interior":{"X1":[{"GlobalConsensus":"Polkadot"}]}}`;
+const relayChainContext = `{"parents":"0","interior":{"X1":[{"GlobalConsensus":"Polkadot"}]}}`;
 
-const xcmBuilder = XCMBuilder.usingContext(paraAContext)
+const xcmBuilder = XCMBuilder.usingContext(relayChainContext)
   .defineAsset("DOT", `{"parents":"0","interior":{"Here":""}}`)
   .create();
 
