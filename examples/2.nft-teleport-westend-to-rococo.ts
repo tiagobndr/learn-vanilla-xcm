@@ -136,7 +136,7 @@ console.log(JSON.stringify(xcm));
                         X2: [
                           {
                             GlobalConsensus: {
-                              ByGenesis: WESTERN_GENESIS_HASH,
+                              ByGenesis: WESTEND_GENESIS_HASH,
                             },
                           },
                           {

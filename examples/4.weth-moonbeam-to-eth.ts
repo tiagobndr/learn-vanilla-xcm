@@ -27,7 +27,7 @@ const xcmBuilder = XCMBuilder.usingContext(moonbeamContext)
   )
   .defineAsset(
     "WETH_ETHEREUM",
-    `{"parents":"2","interior":{"X2":[{"GlobalConsensus":"Ethereum"},{"AccountId20":"${WETH_SC_ETHEREUM}"}]}}` // N!: Ethereum viewed from Moonbeam's perspective
+    `{"parents":"2","interior":{"X2":[{"GlobalConsensus":"Ethereum"},{"AccountId20":"${WETH_SC_ETHEREUM}"}]}}` // N!: Ethereum's WETH viewed from Moonbeam's perspective
   )
   .create();
 
