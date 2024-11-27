@@ -14,7 +14,7 @@
 // Setting the context on ParaA
 const paraAContext = `{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Polkadot"},{"Parachain":"${PARACHAIN_A_ID}"}]}}`;
 
-const xcmBuilder = XcmBuilder.usingContext(paraAContext)
+const xcmBuilder = XCMBuilder.usingContext(paraAContext)
   .defineAsset(
     PARACHAIN_A_NATIVE_TOKEN_SYMBOL,
     `{"parents":"0","interior":{"Here":""}}`

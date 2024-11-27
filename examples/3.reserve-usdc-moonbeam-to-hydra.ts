@@ -23,7 +23,7 @@
 const moonbeamContext =
   '{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Polkadot"},{"Parachain":"2004"}]}}';
 
-const xcmBuilder = XcmBuilder.usingContext(assetHubContext)
+const xcmBuilder = XcmBuilder.usingContext(moonbeamContext)
   .defineAsset(
     "USDC",
     '{"parents":"1","interior":{"X3":[{"Parachain":"1000"},{"PalletInstance":"50"},{"GeneralIndex":"1337"}]}}'
@@ -31,7 +31,7 @@ const xcmBuilder = XcmBuilder.usingContext(assetHubContext)
   .create();
 
 const xcm = xcmBuilder
-  .withdrawAsset("USDC", Definite(usdcAmount))
+  .withdrawAsset("USDC", usdcAmount)
   .payFeesWith("USDC")
   .setNextHop('{"parents":"1","interior":{"X1":[{"Parachain":"1000"}]}}')
   .transferAll("USDC", "reserve")

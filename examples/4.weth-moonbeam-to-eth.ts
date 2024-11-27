@@ -15,9 +15,9 @@
 const WETH_SC_MOONBEAM = "0xab3f0245b83feb11d15aaffefd7ad465a59817ed";
 
 // Setting the context on the Westend relay chain
-const moonbeamAssetHubContext = `{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Polkadot"},{"Parachain":"2004"}]}}`;
+const moonbeamContext = `{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Polkadot"},{"Parachain":"2004"}]}}`;
 
-const xcmBuilder = XCMBuilder.usingContext(moonbeamAssetHubContext)
+const xcmBuilder = XCMBuilder.usingContext(moonbeamContext)
   .defineAsset("GLMR", `{"parents":"0","interior":{"Here":""}}`)
   .defineAsset(
     "WETH_MOONBEAM",
