@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-// Sending USDT from Moonbeam to Hydration Network (through Asset Hub)
+// Sending USDC from Moonbeam to Hydration Network (through Asset Hub)
 //
 // Possible sanity checks
 // 1. WithdrawAsset instruction before DepositReserveAsset
