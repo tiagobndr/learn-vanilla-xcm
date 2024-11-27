@@ -91,7 +91,7 @@ console.log(JSON.stringify(xcm));
     },
   },
   {
-    initiateTransfer: {
+    initiateAssetsTransfer: {
       dest: {
         parents: 0,
         interior: { X1: [{ Parachain: "2000" }] }, // N!: Sending to Polkadot's Asset Hub
