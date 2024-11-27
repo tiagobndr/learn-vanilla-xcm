@@ -13,7 +13,7 @@
 // Setting the context on the Moonbeam parachain
 const moonbeamContext = `{"parents":"0","interior":{"X2":[{"GlobalConsensus":"Polkadot"},{"Parachain":"2004"}]}}`;
 
-const xcmBuilder = XcmBuilder.usingContext(moonbeamContext)
+const xcmBuilder = XCMBuilder.usingContext(moonbeamContext)
   .defineAsset("GLMR", `{"parents":"0","interior":{"Here":""}}`)
   .create();
 
