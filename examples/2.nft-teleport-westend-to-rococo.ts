@@ -3,9 +3,9 @@
 // Teleport NFT from Westend AH to Roccoco AH
 //
 // Possible sanity checks
-// 1. WithdrawAsset instruction before PayFees and DepositAsset
-// 2.
-// 3.
+// 1. WithdrawAsset instruction before PayFees and InitiateTeleport
+// 2. Asset used for fees was already withdrawn (currently in the Holding Register)
+// 3. Asset being teleported was already withdrawn (currently in the Holding Register)
 // 4. Check if the address used for the deposit has 32 bytes
 // 5. Double check XCM's correctness on finalize()
 
